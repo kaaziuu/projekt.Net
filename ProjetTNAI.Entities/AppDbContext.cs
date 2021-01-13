@@ -13,6 +13,7 @@ namespace ProjetTNAI.Entities
     {
         public DbSet<Prowadzacy> Prowadzacy { get; set; }
         public DbSet<Zajecia> Zajecia { get; set; }
+
         public DbSet<Plan> Plany { get; set; }
 
         public AppDbContext() : base("AppConnection")
@@ -28,6 +29,11 @@ namespace ProjetTNAI.Entities
             modelBuilder.Configurations.Add(new PlanConfiguration());
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        public static AppDbContext Create()
+        {
+            return new AppDbContext();
         }
     }
 }

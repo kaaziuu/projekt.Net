@@ -53,11 +53,25 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Abstract\IPlanRepository.cs" />
+    <Compile Include="Repositories\Abstract\IProwadzacyRepository.cs" />
+    <Compile Include="Repositories\Abstract\IZajeciaRepository.cs" />
+    <Compile Include="Repositories\Concrete\BaseRepository.cs" />
+    <Compile Include="Repositories\Concrete\PlanRepository.cs" />
+    <Compile Include="Repositories\Concrete\ProwadzacyRepository.cs" />
+    <Compile Include="Repositories\Concrete\ZajeciaRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjetTNAI.Entities\ProjetTNAI.Entities.csproj">
+      <Project>{92c7bfb0-5c05-4c14-bc2d-959fa63c03d0}</Project>
+      <Name>ProjetTNAI.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
