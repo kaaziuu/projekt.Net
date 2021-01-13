@@ -59,6 +59,10 @@
     <Compile Include="Migrations\202101131807342_init.designer.cs">
       <DependentUpon>202101131807342_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101131927372_poprawkiWZajeciach.cs" />
+    <Compile Include="Migrations\202101131927372_poprawkiWZajeciach.designer.cs">
+      <DependentUpon>202101131927372_poprawkiWZajeciach.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Plan.cs" />
     <Compile Include="Models\Prowadzacy.cs" />
@@ -72,6 +76,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202101131807342_init.resx">
       <DependentUpon>202101131807342_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101131927372_poprawkiWZajeciach.resx">
+      <DependentUpon>202101131927372_poprawkiWZajeciach.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

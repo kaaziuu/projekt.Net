@@ -12,3 +12,4 @@ C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\obj\Debug\ProjetTNAI.E
 C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\obj\Debug\ProjetTNAI.Entities.pdb
 C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\obj\Debug\ProjetTNAI.Entities.Migrations.init.resources
 C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\obj\Debug\ProjetTNAI.Entities.csproj.GenerateResource.cache
+C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\obj\Debug\ProjetTNAI.Entities.Migrations.poprawkiWZajeciach.resources

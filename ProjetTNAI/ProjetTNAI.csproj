@@ -187,6 +187,16 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjetTNAI.DataAccessLayer\ProjetTNAI.DataAccessLayer.csproj">
+      <Project>{c740d7d4-e8c3-44f4-9881-650fe3cf9103}</Project>
+      <Name>ProjetTNAI.DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjetTNAI.Entities\ProjetTNAI.Entities.csproj">
+      <Project>{92c7bfb0-5c05-4c14-bc2d-959fa63c03d0}</Project>
+      <Name>ProjetTNAI.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
