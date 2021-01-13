@@ -51,10 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AppDbContext.cs" />
     <Compile Include="Configurations\PlanConfiguration.cs" />
     <Compile Include="Configurations\ProwadzacyConfiguration.cs" />
     <Compile Include="Configurations\ZajeciaConfiguration.cs" />
+    <Compile Include="Migrations\202101131807342_init.cs" />
+    <Compile Include="Migrations\202101131807342_init.designer.cs">
+      <DependentUpon>202101131807342_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Plan.cs" />
     <Compile Include="Models\Prowadzacy.cs" />
     <Compile Include="Models\Zajecia.cs" />
@@ -64,7 +69,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202101131807342_init.resx">
+      <DependentUpon>202101131807342_init.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

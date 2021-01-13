@@ -1,0 +1,14 @@
+C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\bin\Debug\ProjetTNAI.Entities.dll.config
+C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\bin\Debug\ProjetTNAI.Entities.dll
+C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\bin\Debug\ProjetTNAI.Entities.pdb
+C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\bin\Debug\EntityFramework.dll
+C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\bin\Debug\EntityFramework.xml
+C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\obj\Debug\ProjetTNAI.Entities.csprojAssemblyReference.cache
+C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\obj\Debug\ProjetTNAI.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\obj\Debug\ProjetTNAI.Entities.csproj.CopyComplete
+C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\obj\Debug\ProjetTNAI.Entities.dll
+C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\obj\Debug\ProjetTNAI.Entities.pdb
+C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\obj\Debug\ProjetTNAI.Entities.Migrations.init.resources
+C:\Users\Maciej Rutkowski\projekt.Net\ProjetTNAI.Entities\obj\Debug\ProjetTNAI.Entities.csproj.GenerateResource.cache
