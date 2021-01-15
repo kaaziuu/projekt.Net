@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjektTNAI", "ProjektTNAI\ProjektTNAI.csproj", "{57D8381A-A037-460A-9221-48C4C3DC9204}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetTNAI.Entities", "ProjetTNAI.Entities\ProjetTNAI.Entities.csproj", "{7D322B59-569E-46AA-AAB0-C9D5085C4C84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetTNAI.DataAccessLayer", "ProjetTNAI.DataAccessLayer\ProjetTNAI.DataAccessLayer.csproj", "{0D22B015-A1C1-49E0-9986-129BC4BC7625}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57D8381A-A037-460A-9221-48C4C3DC9204}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57D8381A-A037-460A-9221-48C4C3DC9204}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57D8381A-A037-460A-9221-48C4C3DC9204}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57D8381A-A037-460A-9221-48C4C3DC9204}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D322B59-569E-46AA-AAB0-C9D5085C4C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D322B59-569E-46AA-AAB0-C9D5085C4C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D322B59-569E-46AA-AAB0-C9D5085C4C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D322B59-569E-46AA-AAB0-C9D5085C4C84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D22B015-A1C1-49E0-9986-129BC4BC7625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D22B015-A1C1-49E0-9986-129BC4BC7625}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D22B015-A1C1-49E0-9986-129BC4BC7625}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D22B015-A1C1-49E0-9986-129BC4BC7625}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+EndGlobal
