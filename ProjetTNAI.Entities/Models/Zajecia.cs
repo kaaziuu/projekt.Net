@@ -7,8 +7,10 @@ namespace ProjetTNAI.Entities.Models
         public int Id { get; set; }
 
         public int Godzina { get; set; }
-        public int CzasTrwania {get; set;}
+        public int CzasTrwania { get; set; }
         public int DzienTygodnia { get; set; }
+
+        public string Nazwa { get; set; }
 
         public string LinkDoZajec { get; set; }
 
