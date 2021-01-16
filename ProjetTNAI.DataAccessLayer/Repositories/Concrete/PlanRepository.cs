@@ -14,6 +14,7 @@ namespace ProjetTNAI.DataAccessLayer.Repositories.Concrete
             return await context.Plany.FirstOrDefaultAsync(x => x.Id == id);
         }
 
+
         public async Task<List<Plan>> GetWielePlanowAsync()
         {
             return await context.Plany.ToListAsync();
@@ -33,8 +34,21 @@ namespace ProjetTNAI.DataAccessLayer.Repositories.Concrete
             {
                 return false;
             }
+
             return true;
         }
+
+        public async Task<bool> CheckKey(Plan plan)
+        {
+            var currentPlan = await context.Plany.AsNoTracking().FirstOrDefaultAsync(x => x.Id == plan.Id);
+            if (currentPlan.KluczEdycji == plan.KluczEdycji)
+            {
+                return true;
+            }
+            
+            return false;
+        }
+
 
         public async Task<bool> ZapiszPlanAsync(Plan plan)
         {
@@ -50,6 +64,7 @@ namespace ProjetTNAI.DataAccessLayer.Repositories.Concrete
             {
                 return false;
             }
+
             return true;
         }
     }

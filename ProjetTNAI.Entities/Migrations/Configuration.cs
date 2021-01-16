@@ -3,6 +3,7 @@
 namespace ProjetTNAI.Entities.Migrations
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -29,9 +30,27 @@ namespace ProjetTNAI.Entities.Migrations
                 context.Plany.Add(plan);
                 context.SaveChanges();
 
-                // Przykladowe zajecia
+                // Przykladowe zajecia i prowadzacy
                 if (!context.Zajecia.Any())
                 {
+                    var prowadzacy1 = new Prowadzacy
+                    {
+                        Imie = "Grzesiu",
+                        Nazwisko = "Dzban",
+                        Email = "GD@example.com",
+                    };
+
+                    var prowadzacy2 = new Prowadzacy
+                    {
+                        Imie = "Joanna",
+                        Nazwisko = "Durszlak",
+                        Email = "JoDu@example.com",
+                    };
+
+                    context.Prowadzacy.Add(prowadzacy1);
+                    context.Prowadzacy.Add(prowadzacy2);
+                    context.SaveChanges();
+
                     var zajecia = new Zajecia()
                     {
                         Nazwa = "Testowe Zajecia",
@@ -39,7 +58,11 @@ namespace ProjetTNAI.Entities.Migrations
                         Godzina = 10,
                         CzasTrwania = 2,
                         DzienTygodnia = 3,
-                        LinkDoZajec = "www.test.pl"
+                        LinkDoZajec = "www.test.pl",
+                        Prowadzacy = new List<Prowadzacy>
+                        {
+                            prowadzacy1,
+                        },
                     };
 
                     var zajecia2 = new Zajecia()
@@ -49,7 +72,12 @@ namespace ProjetTNAI.Entities.Migrations
                         Godzina = 12,
                         CzasTrwania = 1,
                         DzienTygodnia = 3,
-                        LinkDoZajec = "www.testoweInne.pl"
+                        LinkDoZajec = "www.testoweInne.pl",
+                        Prowadzacy = new List<Prowadzacy>
+                        {
+                            prowadzacy2,
+                            prowadzacy1,
+                        },
                     };
 
                     context.Zajecia.Add(zajecia);

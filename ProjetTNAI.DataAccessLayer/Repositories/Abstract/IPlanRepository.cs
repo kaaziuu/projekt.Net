@@ -10,5 +10,7 @@ namespace ProjetTNAI.DataAccessLayer.Repositories.Abstract
         Task<List<Plan>> GetWielePlanowAsync();
         Task<bool> ZapiszPlanAsync(Plan plan);
         Task<bool> UsunPlanAsync(Plan plan);
+
+        Task<bool> CheckKey(Plan plan);
     }
 }

@@ -4,3 +4,9 @@ obj/
 riderModule.iml
 /_ReSharper.Caches/
 .idea/
+/.vs/projekt.Net/v16
+/.vs/slnx.sqlite
+/.vs/ProjectSettings.json
+.suo
+applicationhost.config
+.vs/
