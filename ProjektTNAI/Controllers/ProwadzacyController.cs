@@ -23,10 +23,17 @@ namespace ProjektTNAI.Controllers
         }
 
         // GET: Prowadzacy
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int? planId, string editKey)
         {
-            var prowadzacy = await _prowadzacyRepository.GetWieluProwadzacychAsync();
-            return View(prowadzacy);
+            if(planId == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var prowadzacy = await _prowadzacyRepository.GetProwadzacyWPlanieAsync(planId.Value);
+
+            if (await _prowadzacyRepository.KeyIsValid(planId, editKey))
+                return View(prowadzacy);
+            
+            return View(nameof(Index)+"Readonly", prowadzacy);
         }
 
         // GET: Prowadzacy/Details/5
@@ -86,8 +93,11 @@ namespace ProjektTNAI.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Imie,Nazwisko,Email")] Prowadzacy prowadzacy)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Imie,Nazwisko,Email")] Prowadzacy prowadzacy, int? planId, string editKey)
         {
+            if (!await _prowadzacyRepository.KeyIsValid(planId, editKey))
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             if (ModelState.IsValid)
             {
                 await _prowadzacyRepository.ZapiszProwadzacyAsync(prowadzacy);
@@ -114,8 +124,11 @@ namespace ProjektTNAI.Controllers
         // POST: Prowadzacy/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id, int? planId, string editKey)
         {
+            if (!await _prowadzacyRepository.KeyIsValid(planId, editKey))
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             Prowadzacy prowadzacy = await _prowadzacyRepository.GetProwadzacyAsync(id);
             await _prowadzacyRepository.UsunProwadzacyAsync(prowadzacy);
             return RedirectToAction("Index");
