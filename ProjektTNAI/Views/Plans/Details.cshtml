@@ -34,7 +34,13 @@
             @Html.DisplayFor(model => model.Grupa)
         </dd>
 
+        <dt>
+            Prowadzący
+        </dt>
 
+        <dd>
+            @Html.ActionLink("Lista", "Index", "Prowadzacy", new { planId = Model.Id }, null) @*//editKey = Model.KluczEdycji*@
+        </dd>
 
     </dl>
 </div>

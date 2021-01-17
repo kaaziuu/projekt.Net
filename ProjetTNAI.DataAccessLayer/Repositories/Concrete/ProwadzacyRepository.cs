@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using ProjetTNAI.DataAccessLayer.Repositories.Abstract;
 using ProjetTNAI.Entities.Models;
@@ -17,6 +18,11 @@ namespace ProjetTNAI.DataAccessLayer.Repositories.Concrete
         public async Task<List<Prowadzacy>> GetWieluProwadzacychAsync()
         {
             return await context.Prowadzacy.ToListAsync();
+        }
+
+        public async Task<List<Prowadzacy>> GetProwadzacyWPlanieAsync(int planId)
+        {
+            return await context.Prowadzacy.Where(x => x.Zajecia.Any(y => y.PlanId == planId)).ToListAsync();
         }
 
         public async Task<bool> UsunProwadzacyAsync(Prowadzacy prowadzacy)

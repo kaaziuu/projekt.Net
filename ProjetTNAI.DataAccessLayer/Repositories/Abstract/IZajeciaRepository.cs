@@ -6,7 +6,6 @@ namespace ProjetTNAI.DataAccessLayer.Repositories.Abstract
 {
     public interface IZajeciaRepository
     {
-        
         Task<Zajecia> GetZajeciaAsync(int id);
         Task<List<Zajecia>> GetWieleZajecAsync();
 
