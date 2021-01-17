@@ -3,9 +3,10 @@
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pharetra diam non turpis pulvinar, at convallis neque sodales. Nunc ut nunc quis dui semper efficitur aliquet a lorem.</p>
-    <p>
-        <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-lg">Utwórz plan &raquo;</a>
-    </p>
+    <h1>Stworz swoj wlasny plan !</h1>
+    <ul class="list-group">
+        <li class="list-group-item">@Html.ActionLink("Lista Planow", "index", "Plans")</li>
+        <li class="list-group-item">@Html.ActionLink("Lista Prowadzących", "index", "Prowadzacy")</li>
+        @* <li class="list-group-item disabled">@Html.ActionLink("Lista Zajec", "index", "Classes")</li> *@
+    </ul>
 </div>

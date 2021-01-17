@@ -1,0 +1,12 @@
+﻿@using ProjektTNAI.Controllers
+@model ProjetTNAI.Entities.Models.Plan
+@{
+    ViewBag.Title = "Token";
+}
+
+
+<h1>Twoj klucz edycji to @Html.DisplayFor(model => model.KluczEdycji)</h1>
+<h3>Prosze go zapisac bez niego nie bedzie mozliwa edycja planu</h3>
+<h3> @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }) </h3>
+
+@* <h3>@Html.ActionLink("Przejdz do ecycji", "Edit", new {id= .Id})</h3> *@

@@ -81,7 +81,7 @@ namespace ProjektTNAI.Controllers
             if (!result)
                 return View("Error");
 
-            return View(plan);
+            return View("Token", plan);
         }
 
         // GET: Plans/Edit/5
@@ -114,16 +114,19 @@ namespace ProjektTNAI.Controllers
             Plan plan)
         {
             var chekKey = await _planRepository.CheckKey(plan);
-            if (ModelState.IsValid && chekKey)
+
+            if (!chekKey)
             {
-                await _planRepository.ZapiszPlanAsync(plan);
+                return View("keyError", plan);
             }
-            else
+
+            if (!ModelState.IsValid)
             {
                 return View(plan);
             }
+            await _planRepository.ZapiszPlanAsync(plan);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", plan);
         }
 
         // GET: Plans/Delete/5
@@ -153,7 +156,7 @@ namespace ProjektTNAI.Controllers
             Plan plan = await _planRepository.GetPlanAsync(id);
             if (plan.KluczEdycji != key)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("keyError", plan);
             }
 
             await _planRepository.UsunPlanAsync(plan);

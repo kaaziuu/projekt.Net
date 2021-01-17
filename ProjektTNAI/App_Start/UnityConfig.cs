@@ -52,6 +52,8 @@ namespace ProjektTNAI
             
             container.RegisterType<IProwadzacyRepository, ProwadzacyRepository>();
             container.RegisterType<IPlanRepository, PlanRepository>();
+
+            container.RegisterType<IZajeciaRepository, ZajeciaRepository>();
         }
     }
 }
