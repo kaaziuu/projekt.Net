@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjetTNAI.Entities.Models
 {
@@ -9,6 +11,12 @@ namespace ProjetTNAI.Entities.Models
         public int Godzina { get; set; }
         public int CzasTrwania { get; set; }
         public int DzienTygodnia { get; set; }
+
+        [NotMapped]
+        public DateTime Poczatek => new DateTime(1970, 6, DzienTygodnia).AddSeconds(Godzina);
+
+        [NotMapped]
+        public DateTime Koniec => Poczatek + TimeSpan.FromSeconds(CzasTrwania);
 
         public string Nazwa { get; set; }
 

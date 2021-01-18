@@ -25,14 +25,16 @@ namespace ProjektTNAI.Controllers
         // GET: Prowadzacy
         public async Task<ActionResult> Index(int? planId, string editKey)
         {
-            if(planId == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            List<Prowadzacy> prowadzacy;
 
-            var prowadzacy = await _prowadzacyRepository.GetProwadzacyWPlanieAsync(planId.Value);
+            if(planId == null)
+                prowadzacy = await _prowadzacyRepository.GetWieluProwadzacychAsync();
+            else
+                prowadzacy = await _prowadzacyRepository.GetProwadzacyWPlanieAsync(planId.Value);
 
             if (await _prowadzacyRepository.KeyIsValid(planId, editKey))
                 return View(prowadzacy);
-            
+
             return View(nameof(Index)+"Readonly", prowadzacy);
         }
 
@@ -96,7 +98,7 @@ namespace ProjektTNAI.Controllers
         public async Task<ActionResult> Edit([Bind(Include = "Id,Imie,Nazwisko,Email")] Prowadzacy prowadzacy, int? planId, string editKey)
         {
             if (!await _prowadzacyRepository.KeyIsValid(planId, editKey))
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
 
             if (ModelState.IsValid)
             {
@@ -127,7 +129,7 @@ namespace ProjektTNAI.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id, int? planId, string editKey)
         {
             if (!await _prowadzacyRepository.KeyIsValid(planId, editKey))
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
 
             Prowadzacy prowadzacy = await _prowadzacyRepository.GetProwadzacyAsync(id);
             await _prowadzacyRepository.UsunProwadzacyAsync(prowadzacy);

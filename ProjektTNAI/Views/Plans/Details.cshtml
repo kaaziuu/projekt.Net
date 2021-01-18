@@ -16,9 +16,10 @@
         @foreach (var lesson in Model.ZajeciaWPlanie)
         {
             <h3>Nazwa: @lesson.Nazwa</h3>
-            <h6>start o: @lesson.Godzina</h6>
-            <h6>czasTrwania: @lesson.CzasTrwania</h6>
-             @Html.ActionLink("szczegóły ", "Details", "Classes", new {id = lesson.Id}, null)
+            @*<h6>start o: @lesson.Godzina</h6>
+            <h6>czasTrwania: @lesson.CzasTrwania</h6>*@
+            <h6>Czas trwania: @lesson.Poczatek.ToString("HH:m") - @lesson.Koniec.ToString("HH:m")</h6>
+            @Html.ActionLink("szczegóły ", "Details", "Classes", new { id = lesson.Id }, null)
             <hr />
         }
     </dl>
