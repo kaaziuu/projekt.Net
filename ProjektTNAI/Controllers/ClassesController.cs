@@ -10,10 +10,12 @@ namespace ProjektTNAI.Controllers
     {
 
         private readonly IZajeciaRepository _zajeciaRepository;
+        private readonly IProwadzacyRepository _prowadzacyRepository;
 
-        public ClassesController(IZajeciaRepository repository)
+        public ClassesController(IZajeciaRepository repository, IProwadzacyRepository prowadzacyRepository)
         {
             _zajeciaRepository = repository;
+            _prowadzacyRepository = prowadzacyRepository;
         }
         public async Task<ActionResult> Details(int? id)
         {
@@ -29,6 +31,16 @@ namespace ProjektTNAI.Controllers
             }
 
             return View(activities);
+        }
+
+        public async Task<ActionResult> Create()
+        {
+            ViewBag.planId = Request["planId"];
+            ViewBag.name = Request["name"];
+            ViewData["lecturers"] = await _prowadzacyRepository.GetWieluProwadzacychAsync();
+            
+            
+            return View();
         }
     }
 }

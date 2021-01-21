@@ -1,10 +1,12 @@
-﻿@model ProjetTNAI.Entities.Models.Plan
+﻿@using System.Web.UI.HtmlControls
+@using ProjektTNAI.Controllers
+@model ProjetTNAI.Entities.Models.Plan
 
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Modyfikuj</h2>
 
 
 @using (Html.BeginForm())
@@ -57,6 +59,19 @@
     </div>
 }
 
+@foreach (var lesson in Model.ZajeciaWPlanie)
+        {
+            <h3>Nazwa: @lesson.Nazwa</h3>
+            @*<h6>start o: @lesson.Godzina</h6>
+            <h6>czasTrwania: @lesson.CzasTrwania</h6>*@
+            <h6>Czas trwania: @lesson.Poczatek.ToString("HH:m") - @lesson.Koniec.ToString("HH:m")</h6>
+            @Html.ActionLink("szczegóły ", "Details", "Classes", new { id = lesson.Id }, null)
+            <hr />
+        }
+
+<div>
+    @Html.ActionLink("dodaj Zajecia", "Create", "Classes", new {planId=Model.Id, name=Model.Nazwa}, null)
+</div>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

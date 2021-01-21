@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
@@ -51,7 +52,7 @@ namespace ProjektTNAI.Controllers
         }
 
         // GET: Plans/Create
-        public ActionResult Create()
+        public ActionResult Create(int planId)
         {
             return View();
         }
