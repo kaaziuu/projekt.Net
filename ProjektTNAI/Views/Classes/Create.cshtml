@@ -21,27 +21,43 @@
                 @Html.ValidationMessageFor(model => model.Nazwa, "", new {@class = "text-danger"})
             </div>
         </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LinkDoZajec, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LinkDoZajec, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.LinkDoZajec, "", new {@class = "text-danger"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DzienTygodnia, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DropDownList("dayOfWeek", ((SelectList) ViewBag.daysOfWeek))
+                @* @Html.EditorFor(model => model.DzienTygodnia, new {htmlAttributes = new {@class = "form-control"}}) *@
+
+            </div>
+        </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Godzina, htmlAttributes: new {@class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.Poczatek, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Godzina, new {htmlAttributes = new {@class = "form-control", @type = "time"}})
+                <input type="time" name="startAt" class="form-control">
+
                 @* @Html.ValidationMessageFor(model => model.Rok, "", new {@class = "text-danger"}) *@
             </div>
         </div>
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Godzina, htmlAttributes: new {@class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.Koniec, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Godzina, new {htmlAttributes = new {@class = "form-control", @type = "time"}})
+                <input type="time" name="finishAt" class="form-control">
                 @* @Html.ValidationMessageFor(model => model.Rok, "", new {@class = "text-danger"}) *@
             </div>
         </div>
 
         <div class="form-group">
             <label for="lectuer" class="control-label col-md-2">wybierz prowadzącego</label>
-            <select name="lectures" class="selectpicker">
+            <select name="lectures" class="form-select" multiple aria-label="multiple">
                 @foreach (var lecture in ViewData["lecturers"] as IList<Prowadzacy>)
                 {
                     <option value="@lecture.Id">@lecture.Imie @lecture.Nazwisko</option>
@@ -54,12 +70,17 @@
             @* @Html.ActionLink("Back to List", "Index") *@
         </div>
         <input type="hidden" value="@ViewBag.planId" name="planId">
-    }
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" onclick="create()" class="btn btn-default"/>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default"/>
+            </div>
         </div>
-    </div>
+    }
+    @* <div class="form-group"> *@
+    @*     <div class="col-md-offset-2 col-md-10"> *@
+    @*         <input type="button" value="Create" onclick="create()" class="btn btn-default"/> *@
+    @*     </div> *@
+    @* </div> *@
 </div>
 
 <h2>title</h2>

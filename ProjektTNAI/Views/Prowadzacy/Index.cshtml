@@ -36,8 +36,8 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id, planId=Request.Params["planId"], editKey=Request.Params["editKey"] }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id, planId = Request.Params["planId"], editKey = Request.Params["editKey"] })
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) 
+            @* @Html.ActionLink("Delete", "Delete", new { id=item.Id, planId = Request.Params["planId"], editKey = Request.Params["editKey"] }) *@
         </td>
     </tr>
 }

@@ -35,7 +35,7 @@ namespace ProjektTNAI.Controllers
             if (await _prowadzacyRepository.KeyIsValid(planId, editKey))
                 return View(prowadzacy);
 
-            return View(nameof(Index)+"Readonly", prowadzacy);
+            return View(prowadzacy);
         }
 
         // GET: Prowadzacy/Details/5
