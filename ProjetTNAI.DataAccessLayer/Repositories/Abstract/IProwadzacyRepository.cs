@@ -11,6 +11,8 @@ namespace ProjetTNAI.DataAccessLayer.Repositories.Abstract
         Task<List<Prowadzacy>> GetProwadzacyWPlanieAsync(int planId);
 
         Task<bool> ZapiszProwadzacyAsync(Prowadzacy prowadzacy);
-        Task<bool> UsunProwadzacyAsync(Prowadzacy prowadzacy); 
+        Task<bool> UsunProwadzacyAsync(Prowadzacy prowadzacy);
+        Task<List<Prowadzacy>> getLectures(int classId);
+
     }
 }

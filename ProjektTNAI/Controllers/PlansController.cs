@@ -54,6 +54,15 @@ namespace ProjektTNAI.Controllers
         // GET: Plans/Create
         public ActionResult Create()
         {
+            var daysOfWeek = new Dictionary<int, string>
+            {
+                {1, "Poniedziałek"},
+                {2, "Wtorek"},
+                {3, "Środa"},
+                {4, "Czwartek"},
+                {5, "Piątek"},
+            };
+            ViewBag.daysOfWeek = daysOfWeek;
             return View();
         }
 
@@ -77,6 +86,8 @@ namespace ProjektTNAI.Controllers
             }
 
             plan.KluczEdycji = token;
+            
+
 
             var result = await _planRepository.ZapiszPlanAsync(plan);
             if (!result)

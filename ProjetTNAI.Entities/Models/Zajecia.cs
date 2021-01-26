@@ -7,11 +7,7 @@ namespace ProjetTNAI.Entities.Models
 {
     public class Zajecia
     {
-
-        public Zajecia()
-        {
-            this.Prowadzacy = new HashSet<Prowadzacy>();
-        }
+        
         public int Id { get; set; }
 
         public int Godzina { get; set; }
@@ -20,7 +16,7 @@ namespace ProjetTNAI.Entities.Models
 
 
             [NotMapped]
-        public DateTime Poczatek => new DateTime(1970, 6, DzienTygodnia);
+        public DateTime Poczatek => new DateTime(1970, 6, DzienTygodnia).AddSeconds(Godzina);
         
         [NotMapped]
         public DateTime Koniec => Poczatek + TimeSpan.FromSeconds(CzasTrwania);

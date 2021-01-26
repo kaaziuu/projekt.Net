@@ -62,9 +62,8 @@
 @foreach (var lesson in Model.ZajeciaWPlanie)
         {
             <h3>Nazwa: @lesson.Nazwa</h3>
-            @*<h6>start o: @lesson.Godzina</h6>
-            <h6>czasTrwania: @lesson.CzasTrwania</h6>*@
-            <h6>Czas trwania: @lesson.Poczatek.ToString("HH:mm") - @lesson.Koniec.ToString("HH:mm")</h6>
+            <h5 class="dayOfWeek" id="id_@lesson.Id">@lesson.DzienTygodnia</h5>
+            <h6>Godziny: @lesson.Poczatek.ToString("HH:mm") - @lesson.Koniec.ToString("HH:mm")</h6>
             @Html.ActionLink("szczegóły ", "Details", "Classes", new { id = lesson.Id }, null)
             <hr />
         }
@@ -73,9 +72,11 @@
     @Html.ActionLink("dodaj Zajecia", "Create", "Classes", new {planId=Model.Id, name=Model.Nazwa}, null)
 </div>
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Powrót do listy ", "Index")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/dayOfWeek.js")
+
 }

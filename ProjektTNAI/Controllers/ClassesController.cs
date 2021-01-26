@@ -33,13 +33,15 @@ namespace ProjektTNAI.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var activities = await _zajeciaRepository.GetZajeciaAsync(id.Value);
-            if (activities == null)
+            var lesson = await _zajeciaRepository.GetZajeciaAsync(id.Value);
+            if (lesson == null)
             {
                 return HttpNotFound();
             }
 
-            return View(activities);
+            var lecutres = await _prowadzacyRepository.getLectures(id.Value);
+            ViewData["lecturers"] = lecutres;
+            return View(lesson);
         }
 
         public async Task<ActionResult> Create()
@@ -85,6 +87,7 @@ namespace ProjektTNAI.Controllers
                 Godzina = StartAt,
                 DzienTygodnia = Int32.Parse(Request["dayOfWeek"]),
                 CzasTrwania = finishAt - StartAt,
+                Prowadzacy = new List<Prowadzacy>()
 
             };
 
@@ -93,13 +96,16 @@ namespace ProjektTNAI.Controllers
                 var lectureObj = await _prowadzacyRepository.GetProwadzacyAsync(Int32.Parse(lecture));
                 lesson.Prowadzacy.Add(lectureObj);
             }
-            await _zajeciaRepository.ZapiszZajeciaAsync(lesson);
-
+            var ok = await _zajeciaRepository.ZapiszZajeciaAsync(lesson);
+            if (!ok)
+            {
+                return View("Error");
+            }
             // await _zajeciaRepository.ZapiszZajeciaAsync(lesson);
 
 
             // zajecia.Prowadzacy.Add();
-            return View("Details");
+            return RedirectToAction("Details" ,"Plans", new {id=lesson.PlanId});
         }
     }
 }

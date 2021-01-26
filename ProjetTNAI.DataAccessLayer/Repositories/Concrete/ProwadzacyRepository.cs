@@ -58,5 +58,10 @@ namespace ProjetTNAI.DataAccessLayer.Repositories.Concrete
             }
             return true;
         }
+
+        public async Task<List<Prowadzacy>> getLectures(int classId)
+        {
+            return await context.Prowadzacy.Where(x => x.Zajecia.Any(y => y.Id == classId)).ToListAsync();
+        }
     }
 }
