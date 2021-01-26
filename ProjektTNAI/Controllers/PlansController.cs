@@ -52,7 +52,7 @@ namespace ProjektTNAI.Controllers
         }
 
         // GET: Plans/Create
-        public ActionResult Create(int planId)
+        public ActionResult Create()
         {
             return View();
         }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using ProjetTNAI.DataAccessLayer.Repositories.Abstract;
 using ProjetTNAI.Entities.Models;
+using Unity.Injection;
 
 namespace ProjektTNAI.Controllers
 {
@@ -65,24 +66,36 @@ namespace ProjektTNAI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,Nazwa")] Zajecia zajecia)
         {
+
+            if (Request["lectures"] == "")
+            {
+                return View("Create");
+            }
             var lectures = Request["lectures"].Split(',');
-            // var startAt = DateTime.ParseExact(Request["startAt"], "HH:mm", CultureInfo.InvariantCulture);
-            // var finishAt = DateTime.ParseExact(Request["finishAt"], "HH:mm", CultureInfo.InvariantCulture);
-            zajecia.PlanId = Int32.Parse(Request["planId"]);
-            var tmp =
-                (int) TimeSpan.ParseExact(Request["startAt"], "HH:mm", CultureInfo.InvariantCulture).TotalMinutes;
-            var x = "XD";
-            zajecia.Godzina = tmp;
-            zajecia.CzasTrwania =
-                (int) (TimeSpan.ParseExact(Request["finishAt"], "HH:mm", CultureInfo.InvariantCulture).TotalMinutes -
-                       (int) TimeSpan.ParseExact(Request["startAt"], "HH:mm", CultureInfo.InvariantCulture)
-                           .TotalMinutes);
+
+            var tmp = TimeSpan.Parse(Request["startAt"]);
+            var StartAt = tmp.Hours * 3600 + tmp.Minutes * 60;
+            tmp = TimeSpan.Parse(Request["finishAt"]);
+            var finishAt = tmp.Hours * 3600 + tmp.Minutes * 60;
+            zajecia.Prowadzacy = new List<Prowadzacy>();
+            var lesson = new Zajecia
+            {
+                Nazwa = zajecia.Nazwa,
+                PlanId = Int32.Parse(Request["planId"]),
+                Godzina = StartAt,
+                DzienTygodnia = Int32.Parse(Request["dayOfWeek"]),
+                CzasTrwania = finishAt - StartAt,
+
+            };
 
             foreach (var lecture in lectures)
             {
                 var lectureObj = await _prowadzacyRepository.GetProwadzacyAsync(Int32.Parse(lecture));
-                zajecia.Prowadzacy.Add(lectureObj);
+                lesson.Prowadzacy.Add(lectureObj);
             }
+            await _zajeciaRepository.ZapiszZajeciaAsync(lesson);
+
+            // await _zajeciaRepository.ZapiszZajeciaAsync(lesson);
 
 
             // zajecia.Prowadzacy.Add();

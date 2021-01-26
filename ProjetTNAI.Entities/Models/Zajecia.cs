@@ -7,6 +7,11 @@ namespace ProjetTNAI.Entities.Models
 {
     public class Zajecia
     {
+
+        public Zajecia()
+        {
+            this.Prowadzacy = new HashSet<Prowadzacy>();
+        }
         public int Id { get; set; }
 
         public int Godzina { get; set; }

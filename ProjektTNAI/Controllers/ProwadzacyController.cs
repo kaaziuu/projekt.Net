@@ -97,8 +97,7 @@ namespace ProjektTNAI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Imie,Nazwisko,Email")] Prowadzacy prowadzacy, int? planId, string editKey)
         {
-            if (!await _prowadzacyRepository.KeyIsValid(planId, editKey))
-                return View("Error");
+
 
             if (ModelState.IsValid)
             {
@@ -107,33 +106,31 @@ namespace ProjektTNAI.Controllers
             }
             return View(prowadzacy);
         }
-
-        // GET: Prowadzacy/Delete/5
-        public async Task<ActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Prowadzacy prowadzacy = await _prowadzacyRepository.GetProwadzacyAsync(id.Value);
-            if (prowadzacy == null)
-            {
-                return HttpNotFound();
-            }
-            return View(prowadzacy);
-        }
-
-        // POST: Prowadzacy/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id, int? planId, string editKey)
-        {
-            if (!await _prowadzacyRepository.KeyIsValid(planId, editKey))
-                return View("Error");
-
-            Prowadzacy prowadzacy = await _prowadzacyRepository.GetProwadzacyAsync(id);
-            await _prowadzacyRepository.UsunProwadzacyAsync(prowadzacy);
-            return RedirectToAction("Index");
-        }
-    }
+        //
+        // // GET: Prowadzacy/Delete/5
+        // public async Task<ActionResult> Delete(int? id)
+        // {
+        //     if (id == null)
+        //     {
+        //         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //     }
+        //     Prowadzacy prowadzacy = await _prowadzacyRepository.GetProwadzacyAsync(id.Value);
+        //     if (prowadzacy == null)
+        //     {
+        //         return HttpNotFound();
+        //     }
+        //     return View(prowadzacy);
+        // }
+//
+//         // POST: Prowadzacy/Delete/5
+//         [HttpPost, ActionName("Delete")]
+//         [ValidateAntiForgeryToken]
+//         public async Task<ActionResult> DeleteConfirmed(int id, int? planId, string editKey)
+//         {
+// \
+//             Prowadzacy prowadzacy = await _prowadzacyRepository.GetProwadzacyAsync(id);
+//             await _prowadzacyRepository.UsunProwadzacyAsync(prowadzacy);
+//             return RedirectToAction("Index");
+//         }
+     }
 }
