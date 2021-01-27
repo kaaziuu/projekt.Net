@@ -6,6 +6,7 @@
 
 <h2>Plan @Html.DisplayFor(model => model.Nazwa)</h2>
 <h4> @Html.DisplayFor(model => model.Rok) @Html.DisplayFor(model => model.Grupa)</h4>
+@Html.ActionLink("Prowadzący w planie", "Index", "Prowadzacy", new { planId = Model.Id }, null)
 
 
 <div>
@@ -13,12 +14,15 @@
     <hr/>
     <dl class="dl-horizontal">
 
-        @foreach (var lesson in Model.ZajeciaWPlanie)
+        @foreach (var day in Model.ZajeciaWPlanie.GroupBy(x => x.DzienTygodnia).OrderBy(x => x.Key))
         {
-            <h3>Nazwa: @lesson.Nazwa</h3>
-            <h5 class="dayOfWeek" id="id_@lesson.Id">@lesson.DzienTygodnia</h5>
-            <h6>Czas trwania: @lesson.Poczatek.ToString("HH:mm") - @lesson.Koniec.ToString("HH:mm")</h6>
-            @Html.ActionLink("szczegóły ", "Details", "Classes", new { id = lesson.Id }, null)
+            foreach (var lesson in day.OrderBy(x => x.Godzina))
+            {
+                <h3>@lesson.Nazwa</h3>
+                <h5 class="dayOfWeek" id="id_@lesson.Id">@lesson.DzienTygodnia</h5>
+                <h6>Czas trwania: @lesson.Poczatek.ToString("HH:mm") - @lesson.Koniec.ToString("HH:mm")</h6>
+                @Html.ActionLink("szczegóły ", "Details", "Classes", new { id = lesson.Id }, null)
+            }
             <hr />
         }
     </dl>
