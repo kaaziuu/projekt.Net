@@ -12,5 +12,6 @@ namespace ProjetTNAI.DataAccessLayer.Repositories.Abstract
         Task<bool> UsunPlanAsync(Plan plan);
 
         Task<bool> CheckKey(Plan plan);
+        Task<bool> KeyIsValid(int? planId, string editKey);
     }
 }

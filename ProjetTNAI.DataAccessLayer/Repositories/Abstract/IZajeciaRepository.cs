@@ -9,7 +9,8 @@ namespace ProjetTNAI.DataAccessLayer.Repositories.Abstract
         Task<Zajecia> GetZajeciaAsync(int id);
         Task<List<Zajecia>> GetWieleZajecAsync();
 
-        Task<bool> ZapiszZajeciaAsync(Zajecia zajecia);
+        Task<bool> ZapiszZajeciaAsync(Zajecia zajecia, List<Prowadzacy> toRemove);
         Task<bool> UsunZajeciaAsync(Zajecia zajecia);
+
     }
 }

@@ -67,5 +67,14 @@ namespace ProjetTNAI.DataAccessLayer.Repositories.Concrete
 
             return true;
         }
+        public async Task<bool> KeyIsValid(int? planId, string editKey)
+        {
+            if (planId == null)
+                return false;
+
+            var plan = await context.Plany.FirstOrDefaultAsync(x => x.Id == planId.Value && x.KluczEdycji.Equals(editKey));
+
+            return plan != default(Plan);
+        }
     }
 }

@@ -129,7 +129,8 @@ namespace ProjektTNAI.Controllers
 
             if (!chekKey)
             {
-                return View("keyError", plan);
+                @ViewBag.id = plan.Id;
+                return View("keyError");
             }
 
             if (!ModelState.IsValid)
@@ -166,9 +167,15 @@ namespace ProjektTNAI.Controllers
             var key = Request["key"];
 
             Plan plan = await _planRepository.GetPlanAsync(id);
+            if (plan == null)
+            {
+                return HttpNotFound();
+            }
             if (plan.KluczEdycji != key)
             {
-                return View("keyError", plan);
+
+                @ViewBag.Id = plan.Id;
+                return View("keyError");
             }
 
             await _planRepository.UsunPlanAsync(plan);

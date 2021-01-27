@@ -1,0 +1,11 @@
+﻿@model ProjetTNAI.Entities.Models.Plan
+
+@{
+    ViewBag.Title = "bledny klucz";
+}
+
+<h1>Zły token</h1>
+<h2>Podałeś błędy token edycji</h2>
+<h3> @Html.ActionLink("Sprobij jeszcze raz edytowac", "Edit", "Plans",new { id = @ViewBag.Id }, null) </h3>
+<h3> @Html.ActionLink("Sprobij jeszcze raz usunac", "Delete", "Plans",new { id = @ViewBag.Id },null) </h3>
+

@@ -176,9 +176,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Views\Classes\Create.cshtml" />
+    <Content Include="Views\Classes\Delete.cshtml" />
     <Content Include="Views\Classes\Details.cshtml" />
-    <Content Include="Views\Plans\keyError.cshtml" />
+    <Content Include="Views\Classes\Edit.cshtml" />
     <Content Include="Views\Plans\Token.cshtml" />
+    <Content Include="Views\Shared\keyError.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

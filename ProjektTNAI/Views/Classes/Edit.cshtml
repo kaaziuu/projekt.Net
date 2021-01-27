@@ -1,0 +1,152 @@
+﻿@using System.Web.UI.HtmlControls
+@using ProjektTNAI.Controllers
+@using ProjetTNAI.Entities.Models
+@model ProjetTNAI.Entities.Models.Zajecia
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Modyfikuj</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Edytuj zajecia w Planie @ViewBag.name</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.DzienTygodnia)
+        @Html.HiddenFor(model => model.Godzina)
+        @Html.HiddenFor(model => model.CzasTrwania)
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nazwa, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nazwa, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Nazwa, "", new {@class = "text-danger"})
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.LinkDoZajec, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LinkDoZajec, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.LinkDoZajec, "", new {@class = "text-danger"})
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.DzienTygodnia, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DropDownList("dayOfWeek", ((SelectList) ViewBag.daysOfWeek))
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Poczatek, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                <input type="time" name="startAt" id="startAt" class="form-control">
+
+                @* @Html.ValidationMessageFor(model => model.Rok, "", new {@class = "text-danger"}) *@
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Koniec, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                <input type="time" name="finishAt" id="finishAt" class="form-control">
+                @* @Html.ValidationMessageFor(model => model.Rok, "", new {@class = "text-danger"}) *@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="lectuer" class="control-label col-md-2">dodaj prowadzącego</label>
+            <select name="lectures" class="form-select" multiple aria-label="multiple">
+                @foreach (var lecture in ViewData["lecturers"] as IList<Prowadzacy>)
+                {
+                    <option value="@lecture.Id">@lecture.Imie @lecture.Nazwisko</option>
+                }
+            </select>
+
+            @Html.ActionLink("Dodaj prowadzącego", "Create", "Prowadzacy", new {planId=@ViewBag.planId, name=@ViewBag.name}, null )
+        </div>
+
+        <div class="form-group">
+            <label for="lectuer" class="control-label col-md-2">usun prowadzącego</label>
+            <select name="currentLecturers" class="form-select" multiple aria-label="multiple">
+                @foreach (var lecture in ViewData["currentLecturers"] as IList<Prowadzacy>)
+                {
+                    <option value="@lecture.Id">@lecture.Imie @lecture.Nazwisko</option>
+                }
+            </select>
+
+        </div>
+        <div class="form-group">
+            <label for="key" class="control-label col-md-2">klucz edycji </label>
+            <input type="text" id="key" placeholder="klucz edycji" name="key" class="btn btn-default"/>
+            @* @Html.ActionLink("Back to List", "Index") *@
+        </div>
+        <input type="hidden" value="@ViewBag.planId" name="planId">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default"/>
+            </div>
+        </div>
+
+
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/dayOfWeek.js")
+    <script type="text/javascript">
+        dayOfWeek = {
+                "1":"Poniedziałek",
+                "2":"Wtorek",
+                "3":"Środa",
+                "4":"Czwartek",
+                "5":"Piątek",
+            }
+            
+        let el = document.querySelector("select").childNodes;
+        console.log(el);
+        const day = document.getElementById("DzienTygodnia").value;
+        console.log(day)
+        for (let i = 0; i<el.length;i++)
+        {
+            if (el[i].value == day)
+                {
+                    el[i].setAttribute("selected", "");
+                }
+        }
+        let start = parseInt(document.getElementById("Godzina").value);
+        // console.log(start)
+
+        const startAt = new Date(start * 1000);
+        let min = startAt.getMinutes();
+        if(min < 9)
+            min = "0"+min;
+        
+        let end = parseInt(document.getElementById("CzasTrwania").value) + start;
+        const finishAt = new Date(end * 1000);
+        let min2 = startAt.getMinutes();
+        if(min2 < 9)
+            min2 = "0"+min2;
+                
+        
+         console.log(finishAt.getHours()+":"+finishAt.getMinutes());
+        document.getElementById("startAt").value = (startAt.getHours()-1)+":"+min;
+        document.getElementById("finishAt").value = (finishAt.getHours()-1)+":"+min2;
+        
+            
+    
+    </script>
+
+}

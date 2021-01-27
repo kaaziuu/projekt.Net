@@ -1,0 +1,40 @@
+﻿@using ProjetTNAI.Entities.Models
+@model ProjetTNAI.Entities.Models.Zajecia
+
+@{
+    ViewBag.Title = "details";
+}
+<h2>Zajecia @Html.DisplayFor(model => model.Nazwa)</h2>
+<h5 class="dayOfWeek">@Html.DisplayFor(model => model.DzienTygodnia)</h5>
+<h6>Godziny zajęć: @Html.DisplayFor(model => model.Poczatek.TimeOfDay) - @Html.DisplayFor(model => model.Koniec.TimeOfDay)</h6>
+<h6>Link do zajęć: @Html.DisplayFor(model => model.LinkDoZajec)</h6>
+
+<div>
+    <p>Prowadzący zajęcia</p>
+    <ul>
+        @foreach (var lecture in ViewData["lecturers"] as IList<Prowadzacy>)
+        {
+            <li> <a class="btn stretched-link" style="color: #0f0f0f" href="@Url.Action("Details", "Prowadzacy", new {id=lecture.Id})"> @lecture.Imie @lecture.Nazwisko  </a></li>
+        }
+
+        @* @foreach (var lecture in ViewData["lecturers"] as IList<Prowadzacy>) *@
+        @* { *@
+        @*     <option value="@lecture.Id">@lecture.Imie @lecture.Nazwisko</option> *@
+        @* } *@
+    </ul>
+</div>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="text" placeholder="klucz edycji" name="key" class="btn btn-default" /> 
+            @* @Html.ActionLink("Back to List", "Index") *@
+        </div>
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />
+            @Html.ActionLink("Back to List", "Edit", "Plans",new {id=@Model.PlanId},null)
+        </div>
+    }
+@section Scripts {
+    @Scripts.Render("~/Scripts/dayOfWeek.js")
+}
