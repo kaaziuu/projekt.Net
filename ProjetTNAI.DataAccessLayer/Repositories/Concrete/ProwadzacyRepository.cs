@@ -48,11 +48,7 @@ namespace ProjetTNAI.DataAccessLayer.Repositories.Concrete
 
             try
             {
-
-                foreach (var lesson in  prowadzacy.Zajecia)
-                {
-                    context.Zajecia.Attach(lesson);
-                }
+                
                 context.Entry(prowadzacy).State = prowadzacy.Id == default(int) ? EntityState.Added : EntityState.Modified;
 
                 await context.SaveChangesAsync();
